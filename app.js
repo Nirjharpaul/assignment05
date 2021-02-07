@@ -14,7 +14,7 @@ const displayMeal = (foods) => {
             foodInfo += `
               <div class="col-md-3">
                   <div class="food" mealId="${item.idMeal}">
-                      <a onclick="displayMealDetail('${item.strMeal}')" href="#" class="food-link">
+                      <a onclick="displayMealDetail('${item.idMeal}')" href="#" class="food-link">
                       <img src = "${item.strMealThumb}" class="w-100 img-fluid" id="food-thumb">
                       <p id="food-name">${item.strMeal}</p>
                       </a>
@@ -26,9 +26,15 @@ const displayMeal = (foods) => {
     }
 };
 
-const displayMealDetail = (name) => {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${name}`;
+const displayMealDetail = (meal) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`;
     fetch(url)
-        .then((res) => res.json())
-        .then((data) => console.log(data.meals));
+        .then(res => res.json())
+        .then(data => mealDetail(data.meals))
 };
+
+const mealDetail = mealDetail => {
+    const mealDetailDiv = document.getElementById('meal-detail');
+    mealDetailDiv.innerText = mealDetail;
+}
+
