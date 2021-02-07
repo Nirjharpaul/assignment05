@@ -30,7 +30,7 @@ const displayMealDetail = (meal) => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => mealDetail(data.meals))
+        .then(data => mealDetail(data));
 };
 
 const mealDetail = mealDetail => {
