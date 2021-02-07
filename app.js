@@ -1,21 +1,37 @@
 document.getElementById('search-button').addEventListener('click', function () {
     const mealInput = document.getElementById('meal-input').value;
-    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealInput}`)
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => alert('Not Available This Meal'))
+        .then(data => displayMeal(data.meals));
+    // .catch (error => alert('Not Available This Meal'))
 })
 
 
 
-const displayMeal = meals => {
+const displayMeal = foods => {
+
+    // foods.forEach(item => console.log(item));
+
+    foods.forEach(item => {
+
+        const foodsDiv = document.getElementById('meal-container');
 
 
-    // const foodsDiv = document.getElementById('meal-container')
-    // for (let i = 0; i < meals.length; i++) {
-    //     const foodItem = meals.categories[0];
-    //     const foodDiv = document.createElement('div');
-    //     foodDiv.innerText = foodItem.categories;
-    //     foodsDiv.appendChild(foodDiv)
-    // }
+        const foodDiv = document.createElement('div')
+        const foodInfo = `
+                        <div class="col-md-3">
+                            <div class="item" mealId="${item.idMeal}">
+                                <a href="#" class="recipe-btn">
+                                <img src = "${item.strMealThumb}" id="meal-thumb" class="w-100 img-fluid">
+                                <p id="meal-name">${item.strMeal}</p>
+                                </a>
+                            </div>
+                        </div>
+                        `
+
+        foodDiv.innerHTML = foodInfo
+        foodsDiv.appendChild(foodDiv);
+
+    });
+
 }
