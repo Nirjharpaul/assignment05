@@ -1,38 +1,34 @@
-document.getElementById('search-button').addEventListener('click', function () {
-    const mealInput = document.getElementById('meal-input').value;
+document.getElementById("search-button").addEventListener("click", function () {
+    const mealInput = document.getElementById("meal-input").value;
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealInput}`)
-        .then(res => res.json())
-        .then(data => displayMeal(data.meals));
-    // .catch (error => alert('Not Available This Meal'))
-})
+        .then((res) => res.json())
+        .then((data) => displayMeal(data.meals));
+});
 
+const row = document.getElementById("row");
 
+const displayMeal = (foods) => {
+    if (foods) {
+        let foodInfo = "";
+        foods.forEach((item) => {
+            foodInfo += `
+              <div class="col-md-3">
+                  <div class="food" mealId="${item.idMeal}">
+                      <a onclick="displayMealDetail('${item.strMeal}')" href="#" class="food-link">
+                      <img src = "${item.strMealThumb}" class="w-100 img-fluid" id="food-thumb">
+                      <p id="food-name">${item.strMeal}</p>
+                      </a>
+                  </div>
+              </div>
+              `;
+        });
+        document.getElementById("row").innerHTML = foodInfo;
+    }
+};
 
-const displayMeal = foods => {
-
-    // foods.forEach(item => console.log(item));
-
-    foods.forEach(item => {
-
-        const foodsDiv = document.getElementById('meal-container');
-
-        const foodDiv = document.createElement('div')
-        foodDiv.className = 'food';
-
-        const foodInfo = `
-                        <div class="col-md-3">
-                            <div class="-food-item" mealId="${item.idMeal}">
-                                <a href="#" class="food-link">
-                                <img src = "${item.strMealThumb}" id="food-thumb" class="w-100 img-fluid">
-                                <p id="food-name">${item.strMeal}</p>
-                                </a>
-                            </div>
-                        </div>
-                        `
-
-        foodDiv.innerHTML = foodInfo
-        foodsDiv.appendChild(foodDiv);
-
-    });
-
-}
+const displayMealDetail = (name) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${name}`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => console.log(data.meals));
+};

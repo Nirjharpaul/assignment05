@@ -1,8 +1,21 @@
-.food{
-    border:1px solid gray ;
-    border-radius: 5px;
-    padding:10px;
-    height: 300px;
-    width: 300px;
+#food-name {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: black;
+}
+a.food-link {
+    text-decoration: none;
+    
+}
+.food {
+    background: #ebf1f7;
 }
 
+#meal-container img{
+    width: 200px;
+    
+}
+#food-name{
+
+}
