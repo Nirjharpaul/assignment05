@@ -16,14 +16,15 @@ const displayMeal = foods => {
 
         const foodsDiv = document.getElementById('meal-container');
 
-
         const foodDiv = document.createElement('div')
+        foodDiv.className = 'food';
+
         const foodInfo = `
                         <div class="col-md-3">
-                            <div class="item" mealId="${item.idMeal}">
-                                <a href="#" class="recipe-btn">
-                                <img src = "${item.strMealThumb}" id="meal-thumb" class="w-100 img-fluid">
-                                <p id="meal-name">${item.strMeal}</p>
+                            <div class="-food-item" mealId="${item.idMeal}">
+                                <a href="#" class="food-link">
+                                <img src = "${item.strMealThumb}" id="food-thumb" class="w-100 img-fluid">
+                                <p id="food-name">${item.strMeal}</p>
                                 </a>
                             </div>
                         </div>
