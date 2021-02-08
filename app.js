@@ -30,11 +30,26 @@ const displayMealDetail = (meal) => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => mealDetail(data));
+        .then(data => showMealDetail(data.meals[0]));
 };
 
-const mealDetail = mealDetail => {
+const showMealDetail = mealDetail => {
+    console.log(mealDetail.strIngredient1);
     const mealDetailDiv = document.getElementById('meal-detail');
-    mealDetailDiv.innerText = mealDetail;
+    mealDetailDiv.innerHTML = `
+                    <img class="w-50 img-fluid" src="${mealDetail.strMealThumb}">
+                    <h3>${mealDetail.strMeal}</h3>
+                    <h5>Ingredients</h5>
+                    <P>${mealDetail.strIngredient1}</P>
+                    <P>${mealDetail.strIngredient2}</P>
+                    <P>${mealDetail.strIngredient3}</P>
+                    <P>${mealDetail.strIngredient4}</P>
+                    <P>${mealDetail.strIngredient5}</P>
+                    <P>${mealDetail.strIngredient6}</P>
+                    <P>${mealDetail.strIngredient7}</P>
+                    <P>${mealDetail.strIngredient8}</P>
+                    
+    `
 }
+
 
