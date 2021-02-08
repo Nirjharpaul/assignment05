@@ -13,7 +13,7 @@ const displayMeal = (foods) => {
         foods.forEach((item) => {
             foodInfo += `
               <div class="col-md-3">
-                  <div class="food" mealId="${item.idMeal}">
+                  <div class="food">
                       <a onclick="displayMealDetail('${item.idMeal}')" href="#" class="food-link">
                       <img src = "${item.strMealThumb}" class="w-100 img-fluid" id="food-thumb">
                       <p id="food-name">${item.strMeal}</p>
@@ -37,7 +37,9 @@ const showMealDetail = mealDetail => {
     console.log(mealDetail.strIngredient1);
     const mealDetailDiv = document.getElementById('meal-detail');
     mealDetailDiv.innerHTML = `
-                    <img class="w-50 img-fluid" src="${mealDetail.strMealThumb}">
+                    
+                    <div class="ingredients">
+                    <img class="w-100 img-fluid" src="${mealDetail.strMealThumb}">
                     <h3>${mealDetail.strMeal}</h3>
                     <h5>Ingredients</h5>
                     <P>${mealDetail.strIngredient1}</P>
@@ -48,6 +50,7 @@ const showMealDetail = mealDetail => {
                     <P>${mealDetail.strIngredient6}</P>
                     <P>${mealDetail.strIngredient7}</P>
                     <P>${mealDetail.strIngredient8}</P>
+                    </div>
                     
     `
 }

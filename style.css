@@ -1,3 +1,7 @@
+nav img {
+    width: 80px;
+}
+
 #food-name {
     text-align: center;
     padding: 10px;
@@ -16,6 +20,9 @@ a.food-link {
     width: 200px;
     
 }
-#food-name{
-
+.ingredients {
+    background-color: #ebf1f7;
+    width: 500px;
+    margin: auto;
+    
 }
