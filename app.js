@@ -1,4 +1,4 @@
-document.getElementById("search-button").addEventListener("click", function () {
+document.getElementById("search-button").addEventListener("click", () => {
     const mealInput = document.getElementById("meal-input").value;
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealInput}`)
         .then((res) => res.json())
